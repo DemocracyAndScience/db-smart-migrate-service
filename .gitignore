@@ -21,3 +21,15 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+target/classes/META-INF/
+target/classes/application-dev.yml
+target/classes/application-local.yml
+target/classes/application-online.yml
+target/classes/application-staging.yml
+target/classes/application-test.yml
+target/classes/application.yml
+target/classes/logback.xml
+target/classes/mapper/
+target/classes/static/
+target/generated-sources/
+target/generated-test-sources/

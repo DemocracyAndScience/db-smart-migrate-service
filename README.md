@@ -73,8 +73,10 @@
 
 #### 使用说明
 
-1. 登陆 用户名密码为 admin/123456 
+1. 使用IDEA 或 Eclipse 运行 src/main/java/com/system/DBVersionControlServerApplication <br/>
+   
 2. 本地访问 http://localhost:8081/<br/>
+    登陆 用户名密码为 admin/123456
    第一步: 点击 <font color=#008000 >结构同步</font>   ，点击 <font color=#008000 >开始</font>  弹出页面，根据自己需求进行操作，完成后，点击 <font color=#008000 >迁移</font>
    此时会生成新的版本，和新的SQL文件可供下载查看 。
 3. <br/>![avatar](./src/desc-images/a.png)
