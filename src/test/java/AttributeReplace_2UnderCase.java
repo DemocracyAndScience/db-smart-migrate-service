@@ -15,7 +15,7 @@ public class AttributeReplace_2UnderCase {
 
 	@Test
 	public  void main(String[] args) throws Exception{
-		String file = "/Users/noah/project/db-version-control-server/src/test/java/d.txt";
+		String file = "/Users/noah/project/db-control-version-server/src/test/java/d.txt";
 		//DBAtrr2__(file);
 		DBAtrr2JAVA(file);
 	}

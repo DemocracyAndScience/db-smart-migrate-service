@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062) -->
+<html class="js csstransitions translated-ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>数据库版本管理平台</title>
+
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+<!-- css -->
+<link href="./css/css" rel="stylesheet" media="screen">
+<link href="./css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="./css/style.css" rel="stylesheet" media="screen">
+<link href="./css/default.css" rel="stylesheet" media="screen">
+<link href="./css/my.css" rel="stylesheet" media="screen">
+<link href="./css/flow.css" rel="stylesheet" media="screen">
+
+</head>
+<body style="">
+	<div class="adcenter">
+		<script src="./js/ggad2_728x90.js"></script>
+	</div>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-default fixed-to-top" role="navigation"
+		style="display: block;">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-ex1-collapse">
+					<span class="sr-only"><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">切换导航</font></font></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+
+				<!-- Logo text or image -->
+				<a class="navbar-brand" href=""><font
+					style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;">数据库版本控制软件</font></font></a>
+
+			</div>
+			<div class="navigation collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav">
+					<li class=""><a href="#intro"><font
+							style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">家</font></font></a></li>
+					<li class=""><a href="#about"><font
+							style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">版本查询</font></font></a></li>
+					<li class=""><a href="#services"><font
+							style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">SQL上传</font></font></a></li>
+					<li class=""><a href="#team"><font
+							style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">结构同步</font></font></a></li>
+					<li class=""><a href="#portfolio"><font
+							style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">迁移</font></font></a></li>
+					<li class="current"><a href="#contact"><font
+							style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">联系</font></font></a></li>
+					<li class=""><select id="databases" style="margin: 12px;">
+					</select></li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- intro area -->
+	<div id="intro" class="animated fadeIn">
+		<div id="bgndGallery_1541646955563" class="mbBgndGallery"
+			style="position: absolute; top: 0px; width: 100%; height: 100%; overflow: hidden; backface-visibility: hidden;">
+			<img src="./images/1.jpg" w="2048" h="900" id="CSSA_1541646968010"
+				style="position: absolute; height: 100%; width: auto; margin-left: -94.5px; margin-top: 0px; left: 0px; opacity: 0; top: 0px; transform: scale(1) rotate(0deg); filter: blur(0px); backface-visibility: hidden; transition: left 1000ms ease-in 0ms, opacity;"><img
+				src="./images/2.jpg" w="2048" h="900" id="CSSA_1541646972030"
+				style="position: absolute; height: 100%; width: auto; margin-left: -94.5px; margin-top: 0px; left: 0px; opacity: 1; top: 0px; transform: scale(1) rotate(0deg); filter: blur(0px); transition: top 1000ms ease-in 0ms, left, opacity, -webkit-transform, -webkit-filter; backface-visibility: hidden;">
+		</div>
+		<div
+			style="position: absolute; min-height: 100%; min-width: 100%; z-index: 3;">
+			<div class="intro-text">
+				<div class="container">
+					<div class="col-md-12">
+						<div id="rotator">
+							<h1>
+								<span class="1strotate"
+									style="text-shadow: black 0px 0px 0px; opacity: 0.996057;">
+									Creativity and technology</span>
+							</h1>
+							<div class="line-spacer"></div>
+							<p>
+								<span class="2ndrotate"
+									style="text-shadow: black 0px 0px 0px; opacity: 0.996057;">
+									Promotion</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- About -->
+	<section id="about" class="home-section bg-white">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-offset-2 col-md-8">
+					<div class="section-heading">
+						<h2>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">版本查询</font></font>
+						</h2>
+						<div class="heading-line"></div>
+						<p style="text-align: left; margin: 0 50px 10px;">
+							【1】文件默认放置路径为/var/logs/db_locations/{dev|local|online|staging|test}/{数据库名，}
+							<br/>【2】尽量不使用上传的方式，最好使用结构同步 <br />
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row wow fadeInUp"
+				style="visibility: visible; animation-name: fadeInUp;">
+				<div class="col-md-6 about-img">
+					<img src="./images/about-img.jpg" alt="">
+				</div>
+
+				<div class="col-md-6 content">
+					<!-- 接口-->
+					<h5 style="margin: 1px 0;">
+						<font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">历史上传的文件列表：</font></font>
+					</h5>
+					<div style="width: 200px; position: absolute;">
+						<dl id="getFileNames"
+							style="width: 700px; height: 300px; overflow: hidden;">
+						</dl>
+					</div>
+				</div>
+				<!-- 接口-->
+			</div>
+			<div>
+
+				<table id="getInfo" style="width: 1200px; margin: 30px 0">
+					<thead>
+						<tr>
+							<td>版本</td>
+							<td>校验数</td>
+							<td>类型</td>
+							<td>sql 文件</td>
+							<td>状态</td>
+							<td>安装时间</td>
+							<td>执行消耗时间</td>
+							<td>描述</td>
+							<td>操作</td>
+						</tr>
+					</thead>
+
+
+				</table>
+
+			</div>
+		</div>
+
+
+	</section>
+
+
+	<div class="tlinks">
+		<font style="vertical-align: inherit;"><font
+			style="vertical-align: inherit;">从</font><a href="#"><font
+				style="vertical-align: inherit;">企业网站模板</font></a><font
+			style="vertical-align: inherit;">收集</font></font><a href="#"><font
+			style="vertical-align: inherit;"></font></a>
+	</div>
+	<!-- Parallax 1 -->
+	<section id="parallax1" class="home-section parallax"
+		data-stellar-background-ratio="0.5"
+		style="background-position: 0% 2272px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="color-light">
+						<h2 class="wow bounceInDown" data-wow-delay="0.5s"
+							style="visibility: visible; animation-delay: 0.5s; animation-name: bounceInDown;">
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">细节是完美的关键</font></font>
+						</h2>
+						<p class="lead wow bounceInUp" data-wow-delay="1s"
+							style="visibility: visible; animation-delay: 1s; animation-name: bounceInUp;">
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">我们将所有细节混合在一起</font></font>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Services -->
+	<section id="services" class="home-section bg-white">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-offset-2 col-md-8">
+					<div class="section-heading">
+						<h2>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">服务</font></font>
+						</h2>
+						<div class="heading-line"></div>
+						<p style="margin: 0 0 50px 100px; text-align: left;">
+							【1】 文件上传时，请务必按 V[版本号]_[描述信息].sql <br /> 【2】 SQL
+							文件内不能有schema_version,flyway_schema_history 表的所有相关语句
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div id="carousel-service" class="service carousel slide">
+
+						<!-- slides -->
+						<div class="carousel-inner">
+							<div class="item active">
+								<div class="row">
+									<div class="col-sm-12 col-md-offset-1 col-md-6">
+										<div class="wow bounceInLeft"
+											style="visibility: visible; animation-name: bounceInLeft;">
+											<h4>
+												<font style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">SQL上传</font></font>
+											</h4>
+											<!-- 接口-->
+											<form id="uploadForm " action="/db/upload/sql" method="post"
+												enctype="multipart/form-data">
+												<input type="file" name="file" id="sqlFile"> <input
+													type="submit" value="上传" id="uploadSubmit">
+											</form>
+										</div>
+									</div>
+									<div class="col-sm-12 col-md-5">
+										<div class="screenshot wow bounceInRight"
+											style="visibility: visible; animation-name: bounceInRight;">
+											<img src="./images/1.png" class="img-responsive" alt="">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="row">
+									<div class="col-sm-12 col-md-offset-1 col-md-6">
+										<div class="wow bounceInLeft animated"
+											style="visibility: visible; animation-name: bounceInLeft;">
+											<h4>
+												<font style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">品牌识别</font></font>
+											</h4>
+											<p>
+												<font style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">Lorem ipsum dolor
+														sit amet，consectetur adipisicing elit，sed do eiusmod
+														tempor incididunt ut labore et dolore magna。</font></font>
+											</p>
+										</div>
+									</div>
+									<div class="col-sm-12 col-md-5">
+										<div class="screenshot wow bounceInRight animated"
+											style="visibility: visible; animation-name: bounceInRight;">
+											<img src="./images/2.png" class="img-responsive" alt="">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="row">
+									<div class="col-sm-12 col-md-offset-1 col-md-6">
+										<div class="wow bounceInLeft animated"
+											style="visibility: visible; animation-name: bounceInLeft;">
+											<h4>
+												<font style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">网络和移动应用</font></font>
+											</h4>
+											<p>
+												<font style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">Lorem ipsum dolor
+														sit amet，consectetur adipisicing elit，sed do eiusmod
+														tempor incididunt ut labore et dolore magna。</font></font>
+											</p>
+										</div>
+									</div>
+									<div class="col-sm-12 col-md-5">
+										<div class="screenshot wow bounceInRight animated"
+											style="visibility: visible; animation-name: bounceInRight;">
+											<img src="./images/3.png" class="img-responsive" alt="">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<li data-target="#carousel-service" data-slide-to="0"
+								class="active"></li>
+							<li data-target="#carousel-service" data-slide-to="1"></li>
+							<li data-target="#carousel-service" data-slide-to="2"></li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Parallax 2 -->
+	<section id="parallax2" class="home-section parallax"
+		data-stellar-background-ratio="0.5"
+		style="background-position: 0% 1021.19px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<ul class="clients">
+						<li class="wow fadeInDown" data-wow-delay="0.3s"
+							style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInDown;"><a
+							href="#"><img src="./images/1(2).png" alt=""></a></li>
+						<li class="wow fadeInDown" data-wow-delay="0.6s"
+							style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInDown;"><a
+							href="#"><img src="./images/2(1).png" alt=""></a></li>
+						<li class="wow fadeInDown" data-wow-delay="0.9s"
+							style="visibility: visible; animation-delay: 0.9s; animation-name: fadeInDown;"><a
+							href="#"><img src="./images/3(1).png" alt=""></a></li>
+						<li class="wow fadeInDown" data-wow-delay="1.1s"
+							style="visibility: visible; animation-delay: 1.1s; animation-name: fadeInDown;"><a
+							href="#"><img src="./images/4.png" alt=""></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Team -->
+	<!-- Team -->
+	<section id="team" class="home-section bg-white">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-offset-2 col-md-8">
+					<div class="section-heading">
+						<h2>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">数据库结构迁移</font></font>
+						</h2>
+						<div class="heading-line"></div>
+						<p>
+							<font style="vertical-align: inherit;"> <font
+								style="vertical-align: inherit;">Excepteur sint occaecat
+									cupidatat non proident，sunt in culpa qui officia deserunt
+									mollit anim id est laborum</font>
+							</font>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="left: 38%;"
+					style="display: none">
+					<div class="box-team wow bounceInUp" data-wow-delay="0.1s"
+						style="visibility: hidden; animation-delay: 0.1s; animation-name: none;">
+						<img src="./images/1(3).jpg" alt=""
+							class="img-circle img-responsive">
+						<h4>
+							<font style="vertical-align: inherit;"> <font
+								style="vertical-align: inherit;">
+									<button id="startConsSync"
+										style="background: darkcyan; color: aliceblue;">开始</button>
+							</font></font>
+						</h4>
+						<p>
+							<font style="vertical-align: inherit;"> <font
+								style="vertical-align: inherit;">结构同步</font>
+							</font>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div id="alert" class="">
+				<div class="model-head">
+					<span class="close" id="close">×</span>
+					<h4 class="modal-title">Source表与Target表名的冲突</h4>
+				</div>
+				<div class="model-content">
+					<div class="main">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="flow">
+									<div class="flowListBox">
+										<div class="flowList for-cur forA"
+											style="position: relative; width: 25%; border: 2px solid rgb(52, 73, 94); background-color: rgb(52, 73, 94);">
+											<em
+												style="position: absolute; left: 35%; background-color: rgb(52, 73, 94); border: 0px none rgb(0, 0, 0);">1</em><br>
+											<strong style="position: absolute; left: 40%">第1步</strong>
+										</div>
+										<div class="flowList forB"
+											style="position: relative; width: 25%;">
+											<em style="position: absolute; left: 35%">2</em><br> <strong
+												style="position: absolute; left: 40%">第2步</strong>
+										</div>
+										<div class="flowList forC"
+											style="position: relative; width: 25%;">
+											<em style="position: absolute; left: 35%">3</em><br> <strong
+												style="position: absolute; left: 40%">第3步</strong>
+										</div>
+										<div class="flowList forD"
+											style="position: relative; width: 25%;">
+											<em style="position: absolute; left: 35%">4</em><br> <strong
+												style="position: absolute; left: 40%">第4步</strong>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12" id="flowDiv">
+								<div id="contA" style="overflow: scroll; height: 200px;">
+									<table id="targetTablesTable" class="target_table">
+										<thead>
+											<tr>
+												<td style="font-size: 14px; font-weight: 500">版本</td>
+												<td colspan="2" style="font-size: 14px; font-weight: 500">target待处理的表</td>
+											</tr>
+										</thead>
+										<tbody>
+										</tbody>
+									</table>
+
+									<table id="sourceTablesTable" style="float: left;">
+										<thead>
+											<tr>
+												<td style="font-size: 14px; font-weight: 500">版本</td>
+												<td style="font-size: 14px; font-weight: 500">source表名</td>
+												<td></td>
+												<td></td>
+												<td style="font-size: 14px; font-weight: 500">target表名</td>
+												<td></td>
+											</tr>
+										</thead>
+									</table>
+								</div>
+								<div class="contentList" id="contB"
+									style="overflow: scroll; height: 200px;">
+									<div class="target_table">
+										
+									</div>
+								</div>
+								<div class="contentList" id="contC"
+									style="overflow: scroll; height: 200px;">
+									<div class="target_table">
+									</div>
+									
+								</div>
+								<div class="contentList" id="contD"
+									style="overflow: scroll; height: 200px;">
+									
+									<div class="target_table">
+										
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="foot-btn">
+					<!-- <button type="button" class="btn btn-primary disabled" id="btnBack" style="display: none;">上一步</button> -->
+					<button type="button" class="btn btn-default"
+						style="float: right; display: none" id="btnok">完成</button>
+					<button type="button" class="btn btn-success"
+						style="float: right; margin-right: 10px;" id="btnNext">下一步</button>
+				</div>
+			</div>
+			<div id="mask"></div>
+		</div>
+	</section>
+	<!-- Works -->
+	<section id="portfolio" class="home-section bg-gray">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-offset-2 col-md-8">
+					<div class="section-heading">
+						<h2>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">迁移</font></font>
+						</h2>
+						<div class="heading-line"></div>
+						<p>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">上传完成后，点击按钮。</font></font>
+						</p>
+						<!-- 接口 -->
+						<div>
+							<button id="migrate"
+								style="color: rebeccapurple; background-color: lightslategray;">迁移</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Contact -->
+	<section id="contact" class="home-section bg-gray">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-offset-2 col-md-8">
+					<div class="section-heading">
+						<h2>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">联系我们</font></font>
+						</h2>
+						<div class="heading-line"></div>
+						<p>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">如果您有任何疑问或只想对Alstar网络工作室说“你好”，请填写下面的表格，我们将在24小时内与您联系。
+							</font></font>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-offset-2 col-md-8">
+					<div id="sendmessage">
+						<font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">您的留言已发送。</font><font
+							style="vertical-align: inherit;">谢谢！</font></font>
+					</div>
+					<div id="errormessage"></div>
+
+					<form action="" method="post" class="form-horizontal contactForm"
+						role="form">
+						<div class="col-md-offset-2 col-md-8">
+							<div class="form-group">
+								<input type="text" name="name" class="form-control" id="name"
+									placeholder="Your Name" data-rule="minlen:4"
+									data-msg="Please enter at least 4 chars">
+								<div class="validation"></div>
+							</div>
+						</div>
+
+						<div class="col-md-offset-2 col-md-8">
+							<div class="form-group">
+								<input type="email" class="form-control" name="email" id="email"
+									placeholder="Your Email" data-rule="email"
+									data-msg="Please enter a valid email">
+								<div class="validation"></div>
+							</div>
+						</div>
+
+						<div class="col-md-offset-2 col-md-8">
+							<div class="form-group">
+								<input type="text" class="form-control" name="subject"
+									id="subject" placeholder="Subject" data-rule="minlen:4"
+									data-msg="Please enter at least 8 chars of subject">
+								<div class="validation"></div>
+							</div>
+						</div>
+						<div class="col-md-offset-2 col-md-8">
+							<div class="form-group">
+								<textarea class="form-control" name="message" rows="5"
+									data-rule="required" data-msg="Please write something for us"
+									placeholder="Message"></textarea>
+								<div class="validation"></div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-offset-2 col-md-8">
+								<button type="submit" class="btn btn-theme btn-lg btn-block">
+									<font style="vertical-align: inherit;"><font
+										style="vertical-align: inherit;">发信息</font></font>
+								</button>
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- Bottom widget -->
+	<section id="bottom-widget" class="home-section bg-white">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="contact-widget wow bounceInLeft"
+						style="visibility: visible; animation-name: bounceInLeft;">
+						<i class="fa fa-map-marker fa-4x"></i>
+						<h5>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">总公司</font></font>
+						</h5>
+						<p>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;"> 109 Borough High
+									Street，</font></font><br> <font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">伦敦SE1 1NL </font></font>
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="contact-widget wow bounceInUp"
+						style="visibility: visible; animation-name: bounceInUp;">
+						<i class="fa fa-phone fa-4x"></i>
+						<h5>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">呼叫</font></font>
+						</h5>
+						<p>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;"> +1 111 9998 7774 </font></font><br>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">+1 245 4544 6855 </font></font>
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="contact-widget wow bounceInRight"
+						style="visibility: visible; animation-name: bounceInRight;">
+						<i class="fa fa-envelope fa-4x"></i>
+						<h5>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">电邮我们</font></font>
+						</h5>
+						<p>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;"> hello@alstarstudio.com
+							</font></font><br> <font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">sales@alstarstudio.com </font></font>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row mar-top30">
+				<div class="col-md-12">
+					<h5>
+						<font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">我们在社交网络上</font></font>
+					</h5>
+					<ul class="social-network">
+						<li><a href="#"> <span class="fa-stack fa-2x"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+							</span></a></li>
+						<li><a href="#"> <span class="fa-stack fa-2x"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-dribbble fa-stack-1x fa-inverse"></i>
+							</span></a></li>
+						<li><a href="#"> <span class="fa-stack fa-2x"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+							</span></a></li>
+						<li><a href="#"> <span class="fa-stack fa-2x"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+							</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p>
+						<font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">版权所有©Alstar。</font><font
+							style="vertical-align: inherit;">版权所有。</font></font>
+					</p>
+					<div class="credits">
+						<font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;"> 由BootstrapMade设计。</font><font
+							style="vertical-align: inherit;">更多模板</font></font><a href="#"
+							target="_blank" title="模板之家"><font
+							style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">模板之家</font></font></a><font
+							style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;"> - 从</font><a href="#"
+							title="网页模板" target="_blank"><font
+								style="vertical-align: inherit;">网页模板</font></a><font
+							style="vertical-align: inherit;">收集</font></font><a href="#"
+							title="网页模板" target="_blank"><font
+							style="vertical-align: inherit;"></font></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<a href="#" class="back-to-top" style="display: inline;"><i
+		class="fa fa-chevron-up"></i></a>
+
+	<!-- js -->
+	<script src="./js/jquery.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/jquery.form.js"></script>
+	<script src="./js/db_tables.js"></script>
+	<script src="./js/db_columns.js"></script>
+	<script src="./js/db_indexs.js"></script>
+	<script src="./js/db_constraints.js"></script>
+	
+	
+	<script src="./js/wow.min.js"></script>
+	<script src="./js/mb.bgndGallery.js"></script>
+	<script src="./js/mb.bgndGallery.effects.js"></script>
+	<script src="./js/jquery.simple-text-rotator.min.js"></script>
+	<script src="./js/jquery.scrollTo.min.js"></script>
+	<script src="./js/jquery.nav.js"></script>
+	<script src="./js/modernizr.custom.js"></script>
+	<script src="./js/grid.js"></script>
+	<script src="./js/stellar.js"></script>
+	<!-- Contact Form JavaScript File -->
+	<script src="./js/contactform.js"></script>
+
+	<!-- Template Custom Javascript File -->
+	<script src="./js/custom.js"></script>
+
+	
+	<script src="./js/db.js"></script>
+	<script src="./js/flow.js"></script>
+
+
+
+
+
+	<div class="goog-te-spinner-pos">
+		<div class="goog-te-spinner-animation">
+			<svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner"
+				width="96px" height="96px" viewBox="0 0 66 66">
+				<circle class="goog-te-spinner-path" fill="none" stroke-width="6"
+					stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg>
+		</div>
+	</div>
+</body>
+</html>
