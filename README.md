@@ -24,26 +24,26 @@
           datasource:
             url: ${source_1_url:jdbc:mysql://127.0.0.1:3306/shuangshi?characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull}
             username: ${source_1_username:root}
-            password: ${source_1_password:tengyue360}
+            password: ${source_1_password:123456}
             driver-class-name: com.mysql.jdbc.Driver
         sync_target_shuangshi: 
           datasource:
             url: ${target_1_url:jdbc:mysql://172.16.16.128:3306/shuangshi?characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull}
             username: ${target_1_username:root}
-            password: ${target_1_password:tengyue360}
+            password: ${target_1_password:123456}
             driver-class-name: com.mysql.jdbc.Driver
         
         #sync_source_shuangshi-assistant: 
         #  datasource:
         #    url: ${source_2_url:jdbc:mysql://127.0.0.1:3306/shuangshi-assistant?characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull}
         #    username: ${source_2_username:root}
-        #    password: ${source_2_password:tengyue360}
+        #    password: ${source_2_password:123456}
         #    driver-class-name: com.mysql.jdbc.Driver
         #sync_target_shuangshi-assistant: 
         #  datasource:
         #    url: ${target_2_url:jdbc:mysql://172.16.16.128:3306/shuangshi-assistant?characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull}
         #    username: ${target_2_username:root}
-        #    password: ${target_2_password:tengyue360}
+        #    password: ${target_2_password:123456}
         #    driver-class-name: com.mysql.jdbc.Driver
         
         ```
@@ -74,7 +74,7 @@
 #### 使用说明
 
 1. 登陆 用户名密码为 admin/123456 
-2. 本地访问 http://localhost:8080/<br/>
+2. 本地访问 http://localhost:8081/<br/>
    第一步: 点击 <font color=#008000 >结构同步</font>   ，点击 <font color=#008000 >开始</font>  弹出页面，根据自己需求进行操作，完成后，点击 <font color=#008000 >迁移</font>
    此时会生成新的版本，和新的SQL文件可供下载查看 。
 3. <br/>![avatar](./src/desc-images/a.png)
