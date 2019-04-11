@@ -1,0 +1,33 @@
+server:
+  port: 8081
+spring: 
+  profiles: 
+    active: ${active:local}
+  mvc:
+    view:
+      prefix: /pages/
+      suffix: .html
+  jackson: 
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  http:
+    encoding: 
+      charset: UTF-8
+      force: true
+      enabled: true
+    multipart: 
+      max-file-size: 52428800
+      max-request-size: 52428800
+  application: 
+    name: db-service
+logging:
+  config: classpath:logback.xml
+  level:
+    com.system.dao: warn 
+    c.system.dao: warn 
+databases: 
+  names: ${database-names:shuangshi}  
+login: 
+  users: 
+    - Noah: 6d552ab5dbd5840547df091afaba1f74
+    - admin: aba6cb8820ab9f11af0660042dfd2c52

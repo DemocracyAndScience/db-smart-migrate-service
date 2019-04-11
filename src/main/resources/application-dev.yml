@@ -1,0 +1,18 @@
+flyway:
+  enabled: false
+  locations: filesystem:${locations_pre_path:/var/logs/db_locations}/dev
+  baseline-on-migrate: true
+  validate-on-migrate: false
+
+sync_source_shuangshi: 
+  datasource:
+    url: ${source_1_url:jdbc:mysql://10.88.88.7:3306/shuangshi?characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull}
+    username: ${source_1_username:root}
+    password: ${source_1_password:tengyue360}
+    driver-class-name: com.mysql.jdbc.Driver
+sync_target_shuangshi: 
+  datasource:
+    url: ${target_1_url:jdbc:mysql://127.0.0.1:3306/shuangshi?characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull}
+    username: ${target_1_username:root}
+    password: ${target_1_password:123456}
+    driver-class-name: com.mysql.jdbc.Driver
