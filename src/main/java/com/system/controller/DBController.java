@@ -24,7 +24,7 @@ public class DBController {
 
 	/**
 	 * 获取当前信息
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@RequestMapping("/db/info")
@@ -34,7 +34,7 @@ public class DBController {
 	}
 	/**
 	 * 删除文件
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@RequestMapping("/db/deleteFile/{fileName}/")
@@ -44,7 +44,7 @@ public class DBController {
 	}
 	/**
 	 * 上传
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@PostMapping(value = "/db/upload/sql")
@@ -55,7 +55,7 @@ public class DBController {
 
 	/**
 	 * 下载指定版本的SQl 文件
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@RequestMapping("/db/download/unauth/sql/{version}")
@@ -70,7 +70,7 @@ public class DBController {
 
 	/**
 	 * 获取所有版本的文件
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@RequestMapping("/db/filenames/sql")
@@ -81,7 +81,7 @@ public class DBController {
 
 	/**
 	 * 迁移
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@RequestMapping("/db/migrate")

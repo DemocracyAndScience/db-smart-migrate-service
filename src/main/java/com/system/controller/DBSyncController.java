@@ -52,7 +52,7 @@ public class DBSyncController {
 	/**
 	 * 同步数据库结构
 	 * 
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@RequestMapping("/dbsync/syncFramework")
@@ -64,7 +64,7 @@ public class DBSyncController {
 	/**
 	 * 获取source待处理的表
 	 * 
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@RequestMapping("/dbsync/getSourceTables")
@@ -75,7 +75,7 @@ public class DBSyncController {
 
 	/**
 	 * 获取target待处理的表
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@RequestMapping("/dbsync/getTargetTables")
@@ -86,7 +86,7 @@ public class DBSyncController {
 	
 	/**
 	 * 【1】获取target待处理的表  --第一次点击下一步
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@PostMapping(value=  "/dbsync/readyTables"  )
@@ -102,7 +102,7 @@ public class DBSyncController {
 	
 	/**
 	 * 获取source待处理的列
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@RequestMapping("/dbsync/getSourceColumns")
@@ -113,7 +113,7 @@ public class DBSyncController {
 
 	/**
 	 * 获取target待处理的列
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@RequestMapping(value = { "/dbsync/getTargetColumns/{tableName}",  "/dbsync/getTargetColumns" } )
@@ -124,7 +124,7 @@ public class DBSyncController {
 
 	/**
 	 * 【1】获取target待处理的表  --第二次点击下一步
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@PostMapping(value=  "/dbsync/readyColumns"  )
@@ -141,7 +141,7 @@ public class DBSyncController {
 	
 	/**
 	 * 获取source待处理的索引
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@RequestMapping("/dbsync/getSourceIndexs")
@@ -152,7 +152,7 @@ public class DBSyncController {
 
 	/**
 	 * 获取target待处理的索引
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@RequestMapping(value = {"/dbsync/getTargetIndexs/{tableName}" ,"/dbsync/getTargetIndexs"} )
@@ -163,7 +163,7 @@ public class DBSyncController {
 
 	/**
 	 * 【1】获取target待处理的表  --第三次点击下一步
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@PostMapping(value=  "/dbsync/readyIndexs"  )
@@ -178,7 +178,7 @@ public class DBSyncController {
 	
 	/**
 	 * 获取source待处理的表
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@RequestMapping("/dbsync/getSourceConstraints")
@@ -189,7 +189,7 @@ public class DBSyncController {
 
 	/**
 	 * 获取target待处理的表
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@RequestMapping(value = {"/dbsync/getTargetConstraints/{tableName}" ,"/dbsync/getTargetConstraints"} )
@@ -200,7 +200,7 @@ public class DBSyncController {
 
 	/**
 	 * 【1】获取target待处理的表  --第四次点击下一步
-	 * @param environment
+	 *
 	 * @return
 	 */
 	@PostMapping(value=  "/dbsync/readyConstraints"  )

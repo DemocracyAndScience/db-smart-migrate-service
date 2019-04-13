@@ -70,7 +70,7 @@ public class DBSyncServiceImpl implements DBSyncService {
 	@Autowired
 	private ServiceAssistUtils serviceAssistUtils;
 
-	//@Transactional
+	@Transactional
 	@Override
 	public int syncStructure() {
 		// 条件： 当上一个版本处理完成之后， 查询 source 表

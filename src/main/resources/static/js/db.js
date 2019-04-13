@@ -110,7 +110,7 @@ function deleteFile(){
 			if(obj.code == 200 ){
 				alert('删除成功！');
 			}else{
-				alert('删除失败！');
+				alert(obj.message);
 			}
 		}); 
 		$.ajaxSettings.async = true;
@@ -221,7 +221,7 @@ function startConsSync() {
 	$('#startConsSync').click(function() {
 		$.get('/dbsync/syncFramework', function(obj) {
 			if (obj.code != 200) {
-				alert("同步表结构失败！");
+				alert(obj.message);
 				return false;
 			} else {
 				$('#alert').show();
@@ -280,7 +280,7 @@ function saveTablesAndFlushColumnsInfo(){
     				console.log("readyTables： "+obj);
     				
     			}else{
-    				alert("保存失败");
+    				alert(obj.message);
     			}
             }
 		});
@@ -308,7 +308,7 @@ function saveColumnsAndFlushIndexsInfo(){
             	if(obj.code == 200){
     				console.log("readyColumns： "+obj);
     			}else{
-    				alert("保存失败");
+    				alert(obj.message);
     			}
             }
 		});
@@ -337,7 +337,7 @@ function saveIndexsAndFlushConstraintsInfo(){
             	if(obj.code == 200){
     				console.log("readyIndexs： "+obj);
     			}else{
-    				alert("保存失败");
+    				alert(obj.message);
     			}
             }
 		});
@@ -366,7 +366,7 @@ function saveConstraints(){
             	if(obj.code == 200){
     				console.log("readyConstraints： "+obj);
     			}else{
-    				alert("保存失败");
+    				alert(obj.message);
     			}
             }
 		});
