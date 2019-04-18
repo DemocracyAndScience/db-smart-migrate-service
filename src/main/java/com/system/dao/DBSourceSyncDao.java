@@ -13,7 +13,10 @@ import com.system.entity.ConstraintInfo;
 import com.system.entity.IndexInfo;
 import com.system.entity.TableInfo;
 import com.system.utils.annotations.SourceMapperScan;
+import org.springframework.stereotype.Repository;
+
 @SourceMapperScan
+@Repository
 public interface DBSourceSyncDao {
 
 	/*

@@ -1,21 +1,21 @@
 package com.system.dao;
 
-import java.util.Collection;
-import java.util.List;
-
-import org.apache.ibatis.annotations.Lang;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-
 import com.system.dao.lang.ForEachLang;
 import com.system.entity.ColumnInfo;
 import com.system.entity.ConstraintInfo;
 import com.system.entity.IndexInfo;
-import com.system.entity.PartitionInfo;
-import com.system.entity.RoutineInfo;
 import com.system.entity.TableInfo;
 import com.system.utils.annotations.TargetMapperScan;
+import org.apache.ibatis.annotations.Lang;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
+
+import java.util.Collection;
+import java.util.List;
+
 @TargetMapperScan
+@Repository
 public interface DBTargetSyncDao {
 
 	@Select(" SELECT table_name , table_type , engine , row_format , auto_increment "

@@ -3,8 +3,10 @@ package com.system.dao;
 import org.apache.ibatis.annotations.Update;
 
 import com.system.utils.annotations.TargetMapperScan;
+import org.springframework.stereotype.Repository;
 
 @TargetMapperScan
+@Repository
 public interface DBTargetCreateTablesDao {
 
 	@Update("CREATE TABLE IF NOT EXISTS `version_management_source_table` (\n" + 

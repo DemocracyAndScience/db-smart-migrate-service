@@ -118,6 +118,8 @@ public class DBSyncServiceImpl implements DBSyncService {
 		conflictUtils.saveConflictTable(sourceMap, targetMap, currentVersonBigDecimal);
 		// 6.2 如果左表的表信息 ，与其不对应，拼接
 		StringBuilder sqlSb = new StringBuilder();
+		String sqlMode = "SET sql_mode=\"ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION\";\r\n";
+		sqlSb.append(sqlMode);
 		sqlSb = sQLGainUtils.getCommonTablesSql(sourceMap, targetMap, sqlSb, currentVersonBigDecimal);
 		serviceAssistUtils.createPathAndsaveFile(currentVersonBigDecimal, sqlSb);
 		

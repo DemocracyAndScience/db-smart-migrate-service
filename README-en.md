@@ -17,47 +17,39 @@
 
 ##### &emsp;A. CONFIGURE
    1. If you want to configure a single database schema: <br/>
-       rule: sync_source_【database_schema_name】:  sync_target_【database_schema_name】source_1_url。。。 
+       rule:  
     
-        ```springdataql
-        sync_source_shuangshi: 
-          datasource:
-            url: ${source_1_url:jdbc:mysql://127.0.0.1:3306/shuangshi?characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull}
-            username: ${source_1_username:root}
-            password: ${source_1_password:123456}
-            driver-class-name: com.mysql.jdbc.Driver
-        sync_target_shuangshi: 
-          datasource:
-            url: ${target_1_url:jdbc:mysql://172.16.16.128:3306/shuangshi?characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull}
-            username: ${target_1_username:root}
-            password: ${target_1_password:123456}
-            driver-class-name: com.mysql.jdbc.Driver
-        
-        #sync_source_shuangshi-assistant: 
-        #  datasource:
-        #    url: ${source_2_url:jdbc:mysql://127.0.0.1:3306/shuangshi-assistant?characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull}
-        #    username: ${source_2_username:root}
-        #    password: ${source_2_password:123456}
-        #    driver-class-name: com.mysql.jdbc.Driver
-        #sync_target_shuangshi-assistant: 
-        #  datasource:
-        #    url: ${target_2_url:jdbc:mysql://172.16.16.128:3306/shuangshi-assistant?characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull}
-        #    username: ${target_2_username:root}
-        #    password: ${target_2_password:123456}
-        #    driver-class-name: com.mysql.jdbc.Driver
+       ```  name_spaces:
+               shuangshi:
+                 source:
+                   datasource:
+                     url: ${source_1_url:jdbc:mysql://10.88.88.9:3306/shuangshi?characterEncoding=utf-8&useSSL=false}
+                     username: ${source_1_username:root}
+                     password: ${source_1_password:tengyue360}
+                     driver-class-name: com.mysql.jdbc.Driver
+                 target:
+                   datasource:
+                     url: ${target_1_url:jdbc:mysql://127.0.0.1:3306/shuangshi?characterEncoding=utf-8&useSSL=false}
+                     username: ${target_1_username:root}
+                     password: ${target_1_password:123456}
+                     driver-class-name: com.mysql.jdbc.Driver
+           #   shuangshi-mysql:
+           #     source:
+           #       datasource:
+           #         url: ${source_1_url:jdbc:mysql://10.88.88.9:3306/shuangshi-mysql?characterEncoding=utf-8&useSSL=false}
+           #         username: ${source_1_username:root}
+           #         password: ${source_1_password:tengyue360}
+           #         driver-class-name: com.mysql.jdbc.Driver
+           #     target:
+           #       datasource:
+           #         url: ${target_1_url:jdbc:mysql://127.0.0.1:3306/shuangshi-mysql?characterEncoding=utf-8&useSSL=false}
+           #         username: ${target_1_username:root}
+           #         password: ${target_1_password:123456}
+           #         driver-class-name: com.mysql.jdbc.Driver
         
         ```
     
-   2. And The Config 'databases' also be configured.
-     
-        ```springdataql
-        databases: 
-          names：$ {database-names：shuangshi} 
-        # names：shuangshi,shuangshi-assistant
-           
-        ```
-     
-   3. Create directories in Dockerfile or locally 
+   2. Create directories in Dockerfile or locally 
    
         - Create directories to generate the path of the SQL file to be executed.
         ```springdataql
@@ -90,6 +82,6 @@
 11. <br/>![avatar](./src/desc-images/i.png)
 
 #### NOTE
-1. The source and target datasource schema names must be agreement
+
 #### PROBLEM FEEDBACK
  Email ： 757761927@qq.com 

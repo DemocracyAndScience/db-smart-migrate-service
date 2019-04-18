@@ -1,38 +1,23 @@
 package com.system.dao;
 
+import com.system.dao.lang.ForEachLang;
+import com.system.entity.record.*;
+import com.system.entity.record.dto.ColumnDto;
+import com.system.entity.record.dto.ConstraintDto;
+import com.system.entity.record.dto.IndexDto;
+import com.system.entity.record.dto.TableDto;
+import com.system.entity.record.vo.*;
+import com.system.utils.annotations.TargetMapperScan;
+import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
+
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Lang;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Update;
-
-import com.system.dao.lang.ForEachLang;
-import com.system.entity.record.SourceColumn;
-import com.system.entity.record.SourceConstraint;
-import com.system.entity.record.SourceIndex;
-import com.system.entity.record.SourceTable;
-import com.system.entity.record.TargetColumn;
-import com.system.entity.record.TargetConstraint;
-import com.system.entity.record.TargetIndex;
-import com.system.entity.record.TargetTable;
-import com.system.entity.record.dto.ColumnDto;
-import com.system.entity.record.dto.ConstraintDto;
-import com.system.entity.record.dto.IndexDto;
-import com.system.entity.record.dto.TableDto;
-import com.system.entity.record.vo.TableSourceColumn;
-import com.system.entity.record.vo.TableSourceConstraint;
-import com.system.entity.record.vo.TableSourceIndex;
-import com.system.entity.record.vo.TableTargetColumn;
-import com.system.entity.record.vo.TableTargetConstraint;
-import com.system.entity.record.vo.TableTargetIndex;
-import com.system.utils.annotations.TargetMapperScan;
-
 @TargetMapperScan
+@Repository
 public interface DBTargetConflictDao {
 
 	@Insert("INSERT INTO version_management_source_table VALUES( " + "null , #{sourceTableName } ,#{method } , "

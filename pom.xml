@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.system</groupId>
 	<artifactId>db-control-version-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.1-RELEASE</version>
 	<packaging>jar</packaging>
 
 	<name>db-control-version-server</name>
@@ -37,6 +37,12 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.15</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.1.8</version>
 		</dependency>
 		<dependency>
 			<groupId>org.flywaydb</groupId>
@@ -90,6 +96,14 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.54</version>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -101,7 +115,7 @@
 	</build>
 	<repositories>
 		<repository>
-			<id>tengyue</id><!-- admin admin123 -->
+			<id>tengyue</id>
 			<name>Public Repositories</name>
 			<url>http://nexus.tengyue360.com/nexus/content/groups/public/</url>
 			<releases>
