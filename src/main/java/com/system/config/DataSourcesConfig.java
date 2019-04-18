@@ -37,17 +37,17 @@ public class DataSourcesConfig implements ApplicationContextAware {
     /* *//**
      * 两个数据源设置
      **//*
-    @Bean(name = "sourceDataSource_shuangshi")
-    @ConfigurationProperties(prefix = "sync_source_shuangshi.datasource")
-    @Qualifier("sourceDataSource_shuangshi")
+    @Bean(name = "sourceDataSource_database_name")
+    @ConfigurationProperties(prefix = "sync_source_database_name.datasource")
+    @Qualifier("sourceDataSource_database_name")
     public DataSource sourceDataSource() {
         DataSourceBuilder create = DataSourceBuilder.create();
         return create.build();
     }
 
-    @Bean(name = "targetDataSource_shuangshi")
-    @ConfigurationProperties(prefix = "sync_target_shuangshi.datasource")
-    @Qualifier("targetDataSource_shuangshi")
+    @Bean(name = "targetDataSource_database_name")
+    @ConfigurationProperties(prefix = "sync_target_database_name.datasource")
+    @Qualifier("targetDataSource_database_name")
     public DataSource targetDataSource() {
         return DataSourceBuilder.create().build();
     }
@@ -55,18 +55,18 @@ public class DataSourcesConfig implements ApplicationContextAware {
      *//**
      * 两个数据源设置
      **//*
-    @Bean(name = "sourceDataSource_shuangshi-assistant")
-    @ConfigurationProperties(prefix = "sync_source_shuangshi-assistant.datasource")
-    @Qualifier("sourceDataSource_shuangshi-assistant")
-    public DataSource sourceDataSource_shuangshi_assistant() {
+    @Bean(name = "sourceDataSource_database_name-assistant")
+    @ConfigurationProperties(prefix = "sync_source_database_name-assistant.datasource")
+    @Qualifier("sourceDataSource_database_name-assistant")
+    public DataSource sourceDataSource_database_name_assistant() {
         DataSourceBuilder create = DataSourceBuilder.create();
         return create.build();
     }
 
-    @Bean(name = "targetDataSource_shuangshi-assistant")
-    @ConfigurationProperties(prefix = "sync_target_shuangshi-assistant.datasource")
-    @Qualifier("targetDataSource_shuangshi-assistant")
-    public DataSource targetDataSource_shuangshi_assistant() {
+    @Bean(name = "targetDataSource_database_name-assistant")
+    @ConfigurationProperties(prefix = "sync_target_database_name-assistant.datasource")
+    @Qualifier("targetDataSource_database_name-assistant")
+    public DataSource targetDataSource_database_name_assistant() {
         DataSource build = DataSourceBuilder.create().build();
         return build;
     }

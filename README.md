@@ -7,7 +7,7 @@
 - 目前不支持外键和表空间，因为一般现代项目好像不太需要。
 - 目前仅支持Mysql。
 - 提供有界面，支持自定义改动某些字段。
- <br/>![avatar](./src/desc-images/a.png)
+
 #### 软件架构
 - 使用SpringBoot 1.5.9.RELEASE
 - 使用 Flyway 控制版本
@@ -20,29 +20,29 @@
        规则: 
     
         ```  name_spaces:
-               shuangshi:
+               database_name:
                  source:
                    datasource:
-                     url: ${source_1_url:jdbc:mysql://10.88.88.9:3306/shuangshi?characterEncoding=utf-8&useSSL=false}
+                     url: ${source_1_url:jdbc:mysql://test:3306/database_name?characterEncoding=utf-8&useSSL=false}
                      username: ${source_1_username:root}
-                     password: ${source_1_password:tengyue360}
+                     password: ${source_1_password:123456}
                      driver-class-name: com.mysql.jdbc.Driver
                  target:
                    datasource:
-                     url: ${target_1_url:jdbc:mysql://127.0.0.1:3306/shuangshi?characterEncoding=utf-8&useSSL=false}
+                     url: ${target_1_url:jdbc:mysql://dev:3306/database_name?characterEncoding=utf-8&useSSL=false}
                      username: ${target_1_username:root}
                      password: ${target_1_password:123456}
                      driver-class-name: com.mysql.jdbc.Driver
-           #   shuangshi-mysql:
+           #   database_name-mysql:
            #     source:
            #       datasource:
-           #         url: ${source_1_url:jdbc:mysql://10.88.88.9:3306/shuangshi-mysql?characterEncoding=utf-8&useSSL=false}
+           #         url: ${source_1_url:jdbc:mysql://test:3306/database_name-mysql?characterEncoding=utf-8&useSSL=false}
            #         username: ${source_1_username:root}
-           #         password: ${source_1_password:tengyue360}
+           #         password: ${source_1_password:123456}
            #         driver-class-name: com.mysql.jdbc.Driver
            #     target:
            #       datasource:
-           #         url: ${target_1_url:jdbc:mysql://127.0.0.1:3306/shuangshi-mysql?characterEncoding=utf-8&useSSL=false}
+           #         url: ${target_1_url:jdbc:mysql://dev:3306/database_name-mysql?characterEncoding=utf-8&useSSL=false}
            #         username: ${target_1_username:root}
            #         password: ${target_1_password:123456}
            #         driver-class-name: com.mysql.jdbc.Driver
@@ -71,15 +71,7 @@
     登陆 用户名密码为 admin/123456
    第一步: 点击 <font color=#008000 >结构同步</font>   ，点击 <font color=#008000 >开始</font>  弹出页面，根据自己需求进行操作，完成后，点击 <font color=#008000 >迁移</font>
    此时会生成新的版本，和新的SQL文件可供下载查看 。
-3. <br/>![avatar](./src/desc-images/a.png)
-4. <br/>![avatar](./src/desc-images/b.png)
-5. <br/>![avatar](./src/desc-images/c.png)
-6. <br/>![avatar](./src/desc-images/d.png)
-7. <br/>![avatar](./src/desc-images/e.png)
-8. <br/>![avatar](./src/desc-images/f.png)
-9. <br/>![avatar](./src/desc-images/g.png)
-10. <br/>![avatar](./src/desc-images/h.png)
-11. <br/>![avatar](./src/desc-images/i.png)
+
 
 #### 注意事项
 

@@ -6,29 +6,29 @@ flyway:
 
 databases_sync:
   name_spaces:
-    shuangshi:
+    database_name:
       source:
         datasource:
-          url: ${source_1_url:jdbc:mysql://10.88.88.9:3306/shuangshi?characterEncoding=utf-8&useSSL=false}
+          url: ${source_1_url:jdbc:mysql://127.0.0.1:3306/database_name?characterEncoding=utf-8&useSSL=false}
           username: ${source_1_username:root}
-          password: ${source_1_password:tengyue360}
+          password: ${source_1_password:123456}
           driver-class-name: com.mysql.jdbc.Driver
       target:
         datasource:
-          url: ${target_1_url:jdbc:mysql://127.0.0.1:3306/shuangshi?characterEncoding=utf-8&useSSL=false}
+          url: ${target_1_url:jdbc:mysql://127.0.0.1:3306/database_name?characterEncoding=utf-8&useSSL=false}
           username: ${target_1_username:root}
           password: ${target_1_password:123456}
           driver-class-name: com.mysql.jdbc.Driver
-#    shuangshi-mysql:
+#    database_name-mysql:
 #      source:
 #        datasource:
-#          url: ${source_1_url:jdbc:mysql://10.88.88.9:3306/shuangshi-mysql?characterEncoding=utf-8&useSSL=false}
+#          url: ${source_1_url:jdbc:mysql://test:3306/database_name-mysql?characterEncoding=utf-8&useSSL=false}
 #          username: ${source_1_username:root}
-#          password: ${source_1_password:tengyue360}
+#          password: ${source_1_password:123456}
 #          driver-class-name: com.mysql.jdbc.Driver
 #      target:
 #        datasource:
-#          url: ${target_1_url:jdbc:mysql://127.0.0.1:3306/shuangshi-mysql?characterEncoding=utf-8&useSSL=false}
+#          url: ${target_1_url:jdbc:mysql://dev:3306/database_name-mysql?characterEncoding=utf-8&useSSL=false}
 #          username: ${target_1_username:root}
 #          password: ${target_1_password:123456}
 #          driver-class-name: com.mysql.jdbc.Driver

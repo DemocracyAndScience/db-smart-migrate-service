@@ -3,48 +3,48 @@ workspace:
   path: db-service
 pipeline:
   build:
-    image: 'harbor.office.tengyue360.com/library/maven:3.5.2-jdk-8'
+    image: 'harbor.office.123456.com/library/maven:3.5.2-jdk-8'
     privileged: true
     commands:
       - 'mvn clean package'
-      - 'mvn sonar:sonar -Dsonar.host.url=http://sonarqube.tengyue360.com -Dsonar.login=d66805d08a9190f62624d10f376464703d15192a'
+      - 'mvn sonar:sonar -Dsonar.host.url=http://sonarqube.123456.com -Dsonar.login='
     volumes:
       - '/drone/maven-repo:/root/.m2'
       - '/drone/sonar-repo:/root/.sonar'
   public-test:
-    image: harbor.office.tengyue360.com/tools/drone-docker
+    image: harbor.office.123456.com/tools/drone-docker
     secrets:
       - docker_username
       - docker_password
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
     commands:
-      - 'docker login -u $${DOCKER_USERNAME} -p $${DOCKER_PASSWORD} harbor.office.tengyue360.com'
+      - 'docker login -u $${DOCKER_USERNAME} -p $${DOCKER_PASSWORD} harbor.office.123456.com'
       - 'docker build --rm -t db-service .'
-      - 'docker tag db-service harbor.office.tengyue360.com/ty-shuangshi/db-service:test'
-      - 'docker push harbor.office.tengyue360.com/ty-shuangshi/db-service:test'
+      - 'docker tag db-service harbor.office.123456.com/ty-database_name/db-service:test'
+      - 'docker push harbor.office.123456.com/ty-database_name/db-service:test'
     when:
       branch: test
       event: push
   public-online:
-    image: harbor.office.tengyue360.com/tools/drone-docker
+    image: harbor.office.123456.com/tools/drone-docker
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
     commands:
-      - 'docker login -u tengyue360@163.com -p tengyue2018 registry.cn-beijing.aliyuncs.com'
+      - 'docker login -u 123456@163.com -p tengyue2018 registry.cn-beijing.aliyuncs.com'
       - 'docker build --rm  -t db-service .'
-      - 'docker tag db-service registry.cn-beijing.aliyuncs.com/tengyue360/db-service'
-      - 'docker push registry.cn-beijing.aliyuncs.com/tengyue360/db-service'
+      - 'docker tag db-service registry.cn-beijing.aliyuncs.com/123456/db-service'
+      - 'docker push registry.cn-beijing.aliyuncs.com/123456/db-service'
     when:
       branch: master
       event: push
   rancher-test:
-    image: harbor.office.tengyue360.com/tools/drone-rancher
+    image: harbor.office.123456.com/tools/drone-rancher
     url: 'http://10.88.88.3:8080'
     access_key: C6745EEA53E71AF4A51D
     secret_key: kSsbainq9oX3qMWUSUpd9LCkBfwRib9fJd5w7WRd
-    service: shuangshi/db-service
-    docker_image: 'harbor.office.tengyue360.com/ty-shuangshi/db-service:test'
+    service: database_name/db-service
+    docker_image: 'harbor.office.123456.com/ty-database_name/db-service:test'
     start_first: false
     confirm: true
     timeout: 240
@@ -52,13 +52,13 @@ pipeline:
       branch: test
       event: push
   rancher-online:
-    image: harbor.office.tengyue360.com/tools/drone-rancher
+    image: harbor.office.123456.com/tools/drone-rancher
     url: 'http://47.93.33.197:8080'
     secrets:
       - rancher_access_key
       - rancher_secret_key
-    service: tengyue360/db-service
-    docker_image: registry-vpc.cn-beijing.aliyuncs.com/tengyue360/db-service
+    service: 123456/db-service
+    docker_image: registry-vpc.cn-beijing.aliyuncs.com/123456/db-service
     start_first: false
     confirm: true
     timeout: 240
