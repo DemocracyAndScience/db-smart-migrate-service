@@ -13,6 +13,7 @@ import com.system.utils.sqldetail.Column_Util;
 import com.system.utils.sqldetail.Constraint_Util;
 import com.system.utils.sqldetail.Index_Util;
 import com.system.utils.sqldetail.Table_Util;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -305,7 +306,7 @@ public class SQLGennerateUtils {
 						sql += Column_Util.getNull(sourceColumnInfo);
 					}
 					String columnDefault2 = targetColumnInfo.getColumnDefault();
-					if (columnDefault != columnDefault2 && !columnDefault.equals(columnDefault2)) {
+					if (columnDefault != columnDefault2 && StringUtils.isBlank(columnDefault2) &&!columnDefault.equals(columnDefault2)) {
 						sql += " " + Column_Util.getDefault(sourceColumnInfo);
 					} 
 					String extra2 = targetColumnInfo.getExtra();

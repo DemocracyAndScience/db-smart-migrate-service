@@ -89,6 +89,7 @@
 10. <br/>![avatar](./src/desc-images/h.png)
 11. <br/>![avatar](./src/desc-images/i.png)
 
-
+#### NOTE
+1. The source and target datasource schema names must be agreement
 #### PROBLEM FEEDBACK
  Email ： 757761927@qq.com 

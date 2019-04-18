@@ -1,6 +1,6 @@
 flyway:
   enabled: false
-  locations: filesystem:${locations_pre_path:/var/logs/db_locations}/test
+  locations: filesystem:${locations_pre_path:/var/logs/db_locations}/local
   baseline-on-migrate: true
   validate-on-migrate: false
     
@@ -13,7 +13,7 @@ sync_source_shuangshi:
     driver-class-name: com.mysql.jdbc.Driver
 sync_target_shuangshi: 
   datasource:
-    url: ${target_1_url:jdbc:mysql://127.0.0.1:3306/shuangshi?characterEncoding=utf-8&useSSL=false}
+    url: ${target_1_url:jdbc:mysql://127.0.0.1:3306/shuangshi-mysql?characterEncoding=utf-8&useSSL=false}
     username: ${target_1_username:root}
     password: ${target_1_password:123456}
     driver-class-name: com.mysql.jdbc.Driver

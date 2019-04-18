@@ -89,6 +89,7 @@
 10. <br/>![avatar](./src/desc-images/h.png)
 11. <br/>![avatar](./src/desc-images/i.png)
 
-
+#### 注意事项
+1. source 和 target 数据源的 schema 名称必须一致
 #### 问题反馈
  Email ： 757761927@qq.com 
