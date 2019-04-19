@@ -3,11 +3,11 @@
 ##### Synchronized database structure, version control.
 - Synchronize the table, column, index and other information of two schemas between any two environments to solve the problem of database structure differences between different environments.<br/>
 - eg.：The online environment BUG is caused by the change of development database due to the requirement of each new function on line.<br/>
-- Changes include: database tables, table attributes, column names, column attributes, index names, index attributes.<br/>
+- Change target schema based on source schema ,Changes include: database tables, table attributes, column names, column attributes, index names, index attributes.<br/>
 - Currently, foreign keys and table spaces are not supported, because modern projects generally do not seem to need them.
 - Currently only Mysql is supported.
 - Provides an interface to support customization of certain fields.
-
+<br/>![avatar](./src/desc-images/a.png)
 #### SOFTWARE ARCHITECTURE
 - Used SpringBoot 1.5.9.RELEASE
 - Used Flyway for control version . 
@@ -71,7 +71,13 @@
    Login username and password : admin/123456
    First: Click <font color=#008000 >结构同步[Structural synchronization]</font>   ，click <font color=#008000 >开始[start]</font>  Pop-up window ，According to their own needs to operate, after completion, Click <font color=#008000 >迁移【migrate】</font>
    New versions are generated and new SQL files are available for download and viewing. 
-
+3.<br/>![avatar](./src/desc-images/a.png)
+4.<br/>![avatar](./src/desc-images/b.png)
+5.<br/>![avatar](./src/desc-images/c.png)
+6.<br/>![avatar](./src/desc-images/d.png)
+7.<br/>![avatar](./src/desc-images/e.png)
+8.<br/>![avatar](./src/desc-images/f.png)
+9.<br/>![avatar](./src/desc-images/g.png)
 
 #### NOTE
 

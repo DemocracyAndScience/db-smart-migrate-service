@@ -27,5 +27,5 @@ logging:
     c.system.dao: warn
 login:
   users: 
-    - Noah: 6d552ab5dbd5840547df091afaba1f74
-    - admin: aba6cb8820ab9f11af0660042dfd2c52
+    - Noah: e10adc3949ba59abbe56e057f20f883e
+    - admin: e10adc3949ba59abbe56e057f20f883e

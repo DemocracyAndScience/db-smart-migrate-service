@@ -9,7 +9,7 @@ databases_sync:
     database_name:
       source:
         datasource:
-          url: ${source_1_url:jdbc:mysql://127.0.0.1:3306/database_name?characterEncoding=utf-8&useSSL=false}
+          url: ${source_1_url:jdbc:mysql://172.16.16.128:3306/database_name?characterEncoding=utf-8&useSSL=false}
           username: ${source_1_username:root}
           password: ${source_1_password:123456}
           driver-class-name: com.mysql.jdbc.Driver

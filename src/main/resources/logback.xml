@@ -21,7 +21,7 @@
 				%highlight([%-5level] %logger{50} - %msg%n)</pattern>
 		</encoder>
 		<filter class="com.system.utils.filter.log.SqlConsoleThresholdFilter">
-			<level>DEBUG</level>
+			<level>WARN</level>
 		</filter>
 	</appender>
 

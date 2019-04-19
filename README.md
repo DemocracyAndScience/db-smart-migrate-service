@@ -1,13 +1,13 @@
 # db-control-version-server
 #### 介绍
 数据库结构同步版本控制
-- 同步任意两个环境之间的两个schema 的表，列，索引等信息，解决不同环境之间数据库结构差异问题。<br/>
+- 同步任意两个环境之间的两个schema 的表，列，索引等信息， 解决不同环境之间数据库结构差异问题。<br/>
 - 如：因每次新功能上线，由于开发数据库因需求需要而变动，导致的线上环境BUG<br/>
-- 改动包括： 数据库表，表属性，列名，列属性，索引名，索引属性。<br/>
+- 以source schema 为基准，变动 target schema ,改动包括： 数据库表，表属性，列名，列属性，索引名，索引属性。<br/>
 - 目前不支持外键和表空间，因为一般现代项目好像不太需要。
 - 目前仅支持Mysql。
 - 提供有界面，支持自定义改动某些字段。
-
+<br/>![avatar](./src/desc-images/a.png)
 #### 软件架构
 - 使用SpringBoot 1.5.9.RELEASE
 - 使用 Flyway 控制版本
@@ -20,7 +20,7 @@
        规则: 
     
         ```  name_spaces:
-               database_name:
+               schema_name: 
                  source:
                    datasource:
                      url: ${source_1_url:jdbc:mysql://test:3306/database_name?characterEncoding=utf-8&useSSL=false}
@@ -33,7 +33,7 @@
                      username: ${target_1_username:root}
                      password: ${target_1_password:123456}
                      driver-class-name: com.mysql.jdbc.Driver
-           #   database_name-mysql:
+           #   schema_name-mysql:
            #     source:
            #       datasource:
            #         url: ${source_1_url:jdbc:mysql://test:3306/database_name-mysql?characterEncoding=utf-8&useSSL=false}
@@ -71,6 +71,13 @@
     登陆 用户名密码为 admin/123456
    第一步: 点击 <font color=#008000 >结构同步</font>   ，点击 <font color=#008000 >开始</font>  弹出页面，根据自己需求进行操作，完成后，点击 <font color=#008000 >迁移</font>
    此时会生成新的版本，和新的SQL文件可供下载查看 。
+3.<br/>![avatar](./src/desc-images/a.png)
+4.<br/>![avatar](./src/desc-images/b.png)
+5.<br/>![avatar](./src/desc-images/c.png)
+6.<br/>![avatar](./src/desc-images/d.png)
+7.<br/>![avatar](./src/desc-images/e.png)
+8.<br/>![avatar](./src/desc-images/f.png)
+9.<br/>![avatar](./src/desc-images/g.png)
 
 
 #### 注意事项
