@@ -55,7 +55,7 @@ public class IndexContoller {
 	@ResponseBody
 	@RequestMapping(value = "/currentDatabaseName")
 	public String currentDatabaseName(HttpSession session) {
-		String tableSchema = dBUtils.getTableSchema(session);
+		String tableSchema = dBUtils.getTargetTableSchema(session);
 		return tableSchema;
 	}
 

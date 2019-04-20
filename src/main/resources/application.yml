@@ -2,7 +2,7 @@ server:
   port: 8081
 spring: 
   profiles: 
-    active: ${active:local}
+    active: ${active:dev}
   mvc:
     view:
       prefix: /pages/

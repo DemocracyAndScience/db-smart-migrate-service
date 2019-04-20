@@ -79,7 +79,10 @@ public class DBSyncServiceImpl implements DBSyncService {
 		BigDecimal currentVersonBigDecimal = new BigDecimal(version);
 
 		String[] constraintTypes = { ConstraintTypeConstants.CONSTRAINT_TYPE_PRI };
-		String tableSchema = dBUtils.getTableSchema(session);
+		String sourceTableSchema = dBUtils.getSourceTableSchema(session);
+		String targetTableSchema = dBUtils.getTargetTableSchema(session);
+
+		//String tableSchema = dBUtils.getTableSchema(session);
 		if(!version.equals("1")) {
 			int validateSync = serviceAssistUtils.validateSync(currentVerson);
 			if (validateSync != 200) {
@@ -88,23 +91,23 @@ public class DBSyncServiceImpl implements DBSyncService {
 		}
 		// 1. 获取 source ,target 的所有表信息
 		List<String> notQueryTables = DBConstants.getAllTables();
-		List<TableInfo> querySourceTableInfos = dBSourceSyncDao.querySourceTableInfos(tableSchema, notQueryTables);
+		List<TableInfo> querySourceTableInfos = dBSourceSyncDao.querySourceTableInfos(sourceTableSchema, notQueryTables);
 		if (querySourceTableInfos == null || querySourceTableInfos.isEmpty()) {
 			throw new RuntimeException("源数据库没有数据");
 		}
 
-		List<TableInfo> queryTargetTableInfos = dBTargetSyncDao.queryTargetTableInfos(tableSchema, notQueryTables);
+		List<TableInfo> queryTargetTableInfos = dBTargetSyncDao.queryTargetTableInfos(targetTableSchema, notQueryTables);
 		// 2. 查询source ,target表的列信息
-		List<ColumnInfo> querySourceColumnInfos = dBSourceSyncDao.querySourceColumnInfos(tableSchema, notQueryTables);
-		List<ColumnInfo> queryTargetColumnInfos = dBTargetSyncDao.queryTargetColumnInfos(tableSchema, notQueryTables);
+		List<ColumnInfo> querySourceColumnInfos = dBSourceSyncDao.querySourceColumnInfos(sourceTableSchema, notQueryTables);
+		List<ColumnInfo> queryTargetColumnInfos = dBTargetSyncDao.queryTargetColumnInfos(targetTableSchema, notQueryTables);
 		
 		// 3. 查询source ,target 表的索引信息
-		List<IndexInfo> querySourceIndexInfos = dBSourceSyncDao.querySourceIndexInfos(tableSchema, notQueryTables);
-		List<IndexInfo> queryTargetIndexInfos = dBTargetSyncDao.queryTargetIndexInfos(tableSchema, notQueryTables);
+		List<IndexInfo> querySourceIndexInfos = dBSourceSyncDao.querySourceIndexInfos(sourceTableSchema, notQueryTables);
+		List<IndexInfo> queryTargetIndexInfos = dBTargetSyncDao.queryTargetIndexInfos(targetTableSchema, notQueryTables);
 		// 4. 查询source ,target 表的约束信息
-		List<ConstraintInfo> querySourceConstraintInfos = dBSourceSyncDao.querySourceConstraintInfos(tableSchema,
+		List<ConstraintInfo> querySourceConstraintInfos = dBSourceSyncDao.querySourceConstraintInfos(sourceTableSchema,
 				notQueryTables, constraintTypes);
-		List<ConstraintInfo> queryTargetConstraintInfos = dBTargetSyncDao.queryTargetConstraintInfos(tableSchema,
+		List<ConstraintInfo> queryTargetConstraintInfos = dBTargetSyncDao.queryTargetConstraintInfos(targetTableSchema,
 				notQueryTables, constraintTypes);
 
 		// 5. 封装数据
@@ -200,19 +203,19 @@ public class DBSyncServiceImpl implements DBSyncService {
 				dBTargetConflictDao.editSourceTables(tableDto);
 			}
 			// 添加SQL
-			String tableSchema = dBUtils.getTableSchema(session);
+			String sourceTableSchema = dBUtils.getSourceTableSchema(session);
 			List<String> sourceTables = addTables.stream().map(table -> {
 				return table.getSourceTableName();
 			}).collect(Collectors.toList());
-			List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(tableSchema,
+			List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(sourceTableSchema,
 					sourceTables);
-			List<ColumnInfo> queryLookSourceColumnInfos = dBSourceSyncDao.queryLookSourceColumnInfos(tableSchema,
+			List<ColumnInfo> queryLookSourceColumnInfos = dBSourceSyncDao.queryLookSourceColumnInfos(sourceTableSchema,
 					sourceTables);
-			List<IndexInfo> queryLookSourceIndexInfos = dBSourceSyncDao.queryLookSourceIndexInfos(tableSchema,
+			List<IndexInfo> queryLookSourceIndexInfos = dBSourceSyncDao.queryLookSourceIndexInfos(sourceTableSchema,
 					sourceTables);
 			String[] constraintTypes = { ConstraintTypeConstants.CONSTRAINT_TYPE_PRI };
 			List<ConstraintInfo> queryLookSourceConstraintInfos = dBSourceSyncDao
-					.queryLookSourceConstraintInfos(tableSchema, sourceTables, constraintTypes);
+					.queryLookSourceConstraintInfos(sourceTableSchema, sourceTables, constraintTypes);
 			Map<String, TableInfo> sourceMap = PackageUtils.packTables(queryLookSourceTableInfos,
 					queryLookSourceColumnInfos, queryLookSourceIndexInfos,
 					queryLookSourceConstraintInfos /* , querySourcePartitionInfos */ );
@@ -254,7 +257,9 @@ public class DBSyncServiceImpl implements DBSyncService {
 	@Override
 	public StringBuilder lookReadyTables(List<TableDto> tableDtos, StringBuilder sqlSb) {
 
-		String tableSchema = dBUtils.getTableSchema(session);
+		String sourceTableSchema = dBUtils.getSourceTableSchema(session);
+		String targetTableSchema = dBUtils.getTargetTableSchema(session);
+		//String tableSchema = dBUtils.getTableSchema(session);
 		List<String> sourceTables = tableDtos.stream().map(table -> {
 			return table.getSourceTableName();
 		}).collect(Collectors.toList());
@@ -262,26 +267,26 @@ public class DBSyncServiceImpl implements DBSyncService {
 			return table.getTargetTableName();
 		}).collect(Collectors.toList());
 
-		List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(tableSchema,
+		List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(sourceTableSchema,
 				sourceTables);
-		List<TableInfo> queryLookTargetTableInfos = dBTargetSyncDao.queryLookTargetTableInfos(tableSchema,
+		List<TableInfo> queryLookTargetTableInfos = dBTargetSyncDao.queryLookTargetTableInfos(targetTableSchema,
 				targetTables);
 
-		List<ColumnInfo> queryLookSourceColumnInfos = dBSourceSyncDao.queryLookSourceColumnInfos(tableSchema,
+		List<ColumnInfo> queryLookSourceColumnInfos = dBSourceSyncDao.queryLookSourceColumnInfos(sourceTableSchema,
 				sourceTables);
-		List<ColumnInfo> queryLookTargetColumnInfos = dBTargetSyncDao.queryLookTargetColumnInfos(tableSchema,
+		List<ColumnInfo> queryLookTargetColumnInfos = dBTargetSyncDao.queryLookTargetColumnInfos(targetTableSchema,
 				targetTables);
 
-		List<IndexInfo> queryLookSourceIndexInfos = dBSourceSyncDao.queryLookSourceIndexInfos(tableSchema,
+		List<IndexInfo> queryLookSourceIndexInfos = dBSourceSyncDao.queryLookSourceIndexInfos(sourceTableSchema,
 				sourceTables);
-		List<IndexInfo> queryLookTargetIndexInfos = dBTargetSyncDao.queryLookTargetIndexInfos(tableSchema,
+		List<IndexInfo> queryLookTargetIndexInfos = dBTargetSyncDao.queryLookTargetIndexInfos(targetTableSchema,
 				targetTables);
 
 		String[] constraintTypes = { ConstraintTypeConstants.CONSTRAINT_TYPE_PRI  };
 		List<ConstraintInfo> queryLookSourceConstraintInfos = dBSourceSyncDao
-				.queryLookSourceConstraintInfos(tableSchema, sourceTables, constraintTypes);
+				.queryLookSourceConstraintInfos(sourceTableSchema, sourceTables, constraintTypes);
 		List<ConstraintInfo> queryLookTargetConstraintInfos = dBTargetSyncDao
-				.queryLookTargetConstraintInfos(tableSchema, targetTables, constraintTypes);
+				.queryLookTargetConstraintInfos(targetTableSchema, targetTables, constraintTypes);
 
 		Map<String, TableInfo> sourceMap = PackageUtils.packTables(queryLookSourceTableInfos,
 				queryLookSourceColumnInfos, queryLookSourceIndexInfos, queryLookSourceConstraintInfos);
@@ -324,8 +329,8 @@ public class DBSyncServiceImpl implements DBSyncService {
 		VersionInfo currentVerson = serviceAssistUtils.getCurrentVerson();
 		BigDecimal currentVersonBigDecimal = new BigDecimal(currentVerson.getVersion());
 
-		String tableSchema = dBUtils.getTableSchema(session);
 
+		String sourceTableSchema = dBUtils.getSourceTableSchema(session);
 		StringBuilder sqlSb = new StringBuilder();
 		if (addColumns != null && !addColumns.isEmpty()) {
 			for (ColumnDto columnDto : addColumns) {
@@ -339,15 +344,15 @@ public class DBSyncServiceImpl implements DBSyncService {
 			Set<String> sourceTables = addColumns.stream().map(column -> {
 				return column.getTableName();
 			}).collect(Collectors.toSet());
-			List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(tableSchema,
+			List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(sourceTableSchema,
 					sourceTables);
-			List<ColumnInfo> queryLookSourceColumnInfos = dBSourceSyncDao.queryLookSourceColumnInfos(tableSchema,
+			List<ColumnInfo> queryLookSourceColumnInfos = dBSourceSyncDao.queryLookSourceColumnInfos(sourceTableSchema,
 					sourceTables);
-			List<IndexInfo> queryLookSourceIndexInfos = dBSourceSyncDao.queryLookSourceIndexInfos(tableSchema,
+			List<IndexInfo> queryLookSourceIndexInfos = dBSourceSyncDao.queryLookSourceIndexInfos(sourceTableSchema,
 					sourceTables);
 			String[] constraintTypes = { ConstraintTypeConstants.CONSTRAINT_TYPE_PRI };
 			List<ConstraintInfo> queryLookSourceConstraintInfos = dBSourceSyncDao
-					.queryLookSourceConstraintInfos(tableSchema, sourceTables, constraintTypes);
+					.queryLookSourceConstraintInfos(sourceTableSchema, sourceTables, constraintTypes);
 			Map<String, TableInfo> sourceMap = PackageUtils.packTables(queryLookSourceTableInfos,
 					queryLookSourceColumnInfos, queryLookSourceIndexInfos, queryLookSourceConstraintInfos);
 			sqlSb = SQLGainUtils.addTargetColumns(sourceMap, addColumns, sqlSb);
@@ -373,15 +378,15 @@ public class DBSyncServiceImpl implements DBSyncService {
 			Set<String> sourceTables = changeColumns.stream().map(column -> {
 				return column.getTableName();
 			}).collect(Collectors.toSet());
-			List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(tableSchema,
+			List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(sourceTableSchema,
 					sourceTables);
-			List<ColumnInfo> queryLookSourceColumnInfos = dBSourceSyncDao.queryLookSourceColumnInfos(tableSchema,
+			List<ColumnInfo> queryLookSourceColumnInfos = dBSourceSyncDao.queryLookSourceColumnInfos(sourceTableSchema,
 					sourceTables);
-			List<IndexInfo> queryLookSourceIndexInfos = dBSourceSyncDao.queryLookSourceIndexInfos(tableSchema,
+			List<IndexInfo> queryLookSourceIndexInfos = dBSourceSyncDao.queryLookSourceIndexInfos(sourceTableSchema,
 					sourceTables);
 			String[] constraintTypes = { ConstraintTypeConstants.CONSTRAINT_TYPE_PRI  };
 			List<ConstraintInfo> queryLookSourceConstraintInfos = dBSourceSyncDao
-					.queryLookSourceConstraintInfos(tableSchema, sourceTables, constraintTypes);
+					.queryLookSourceConstraintInfos(sourceTableSchema, sourceTables, constraintTypes);
 			Map<String, TableInfo> sourceMap = PackageUtils.packTables(queryLookSourceTableInfos,
 					queryLookSourceColumnInfos, queryLookSourceIndexInfos, queryLookSourceConstraintInfos);
 			sqlSb = SQLGainUtils.changeNameTargetColumns(sourceMap, changeColumns, sqlSb);
@@ -404,7 +409,7 @@ public class DBSyncServiceImpl implements DBSyncService {
 	 */
 	@Override
 	public StringBuilder lookReadyColumns(List<ColumnDto> columnDtos, StringBuilder sqlSb) {
-		String tableSchema = dBUtils.getTableSchema(session);
+		String targetTableSchema = dBUtils.getTargetTableSchema(session);
 		VersionInfo currentVerson = serviceAssistUtils.getCurrentVerson();
 		BigDecimal currentVersonBigDecimal = new BigDecimal(currentVerson.getVersion());
 		Set<String> sourceTableNames = columnDtos.stream().map(columnDto -> {
@@ -415,15 +420,15 @@ public class DBSyncServiceImpl implements DBSyncService {
 				sourceTableNames);
 
 		Collection<String> targetTableNames = packSourceTargetTables.values();
-		List<TableInfo> queryLookTargetTableInfos = dBTargetSyncDao.queryLookTargetTableInfos(tableSchema,
+		List<TableInfo> queryLookTargetTableInfos = dBTargetSyncDao.queryLookTargetTableInfos(targetTableSchema,
 				targetTableNames);
 
-		List<IndexInfo> queryLookTargetIndexInfos = dBTargetSyncDao.queryLookTargetIndexInfos(tableSchema,
+		List<IndexInfo> queryLookTargetIndexInfos = dBTargetSyncDao.queryLookTargetIndexInfos(targetTableSchema,
 				targetTableNames);
 
 		String[] constraintTypes = { ConstraintTypeConstants.CONSTRAINT_TYPE_PRI  };
 		List<ConstraintInfo> queryLookTargetConstraintInfos = dBTargetSyncDao
-				.queryLookTargetConstraintInfos(tableSchema, targetTableNames, constraintTypes);
+				.queryLookTargetConstraintInfos(targetTableSchema, targetTableNames, constraintTypes);
 
 		Map<String, TableInfo> targetMap = PackageUtils.packTables(queryLookTargetTableInfos, null,
 				queryLookTargetIndexInfos, queryLookTargetConstraintInfos);
@@ -444,7 +449,8 @@ public class DBSyncServiceImpl implements DBSyncService {
 		VersionInfo currentVerson = serviceAssistUtils.getCurrentVerson();
 		BigDecimal currentVersonBigDecimal = new BigDecimal(currentVerson.getVersion());
 
-		String tableSchema = dBUtils.getTableSchema(session);
+
+		String sourceTableSchema = dBUtils.getSourceTableSchema(session);
 		StringBuilder sqlSb = new StringBuilder();
 		if (addIndexs != null && !addIndexs.isEmpty()) {
 			for (IndexDto indexDto : addIndexs) {
@@ -457,9 +463,9 @@ public class DBSyncServiceImpl implements DBSyncService {
 			Set<String> sourceTables = addIndexs.stream().map(index -> {
 				return index.getTableName();
 			}).collect(Collectors.toSet());
-			List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(tableSchema,
+			List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(sourceTableSchema,
 					sourceTables);
-			List<IndexInfo> queryLookSourceIndexInfos = dBSourceSyncDao.queryLookSourceIndexInfos(tableSchema,
+			List<IndexInfo> queryLookSourceIndexInfos = dBSourceSyncDao.queryLookSourceIndexInfos(sourceTableSchema,
 					sourceTables);
 			Map<String, TableInfo> sourceMap = PackageUtils.packTables(queryLookSourceTableInfos, null,
 					queryLookSourceIndexInfos, null);
@@ -487,9 +493,9 @@ public class DBSyncServiceImpl implements DBSyncService {
 			Set<String> sourceTables = changeIndexs.stream().map(column -> {
 				return column.getTableName();
 			}).collect(Collectors.toSet());
-			List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(tableSchema,
+			List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(sourceTableSchema,
 					sourceTables);
-			List<IndexInfo> queryLookSourceIndexInfos = dBSourceSyncDao.queryLookSourceIndexInfos(tableSchema,
+			List<IndexInfo> queryLookSourceIndexInfos = dBSourceSyncDao.queryLookSourceIndexInfos(sourceTableSchema,
 					sourceTables);
 			Map<String, TableInfo> sourceMap = PackageUtils.packTables(queryLookSourceTableInfos, null,
 					queryLookSourceIndexInfos, null);
@@ -514,7 +520,8 @@ public class DBSyncServiceImpl implements DBSyncService {
 		Date date = new Date();
 		VersionInfo currentVerson = serviceAssistUtils.getCurrentVerson();
 		BigDecimal currentVersonBigDecimal = new BigDecimal(currentVerson.getVersion());
-		String tableSchema = dBUtils.getTableSchema(session);
+		String sourceTableSchema = dBUtils.getSourceTableSchema(session);
+		String targetTableSchema = dBUtils.getTargetTableSchema(session);
 		StringBuilder sqlSb = new StringBuilder();
 		if (addConstraints != null && !addConstraints.isEmpty()) {
 			for (ConstraintDto constraintDto : addConstraints) {
@@ -527,12 +534,12 @@ public class DBSyncServiceImpl implements DBSyncService {
 			Set<String> sourceTables = addConstraints.stream().map(index -> {
 				return index.getTableName();
 			}).collect(Collectors.toSet());
-			List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(tableSchema,
+			List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(sourceTableSchema,
 					sourceTables);
 			
 			String[] constraintTypes = { ConstraintTypeConstants.CONSTRAINT_TYPE_PRI  };
 			List<ConstraintInfo> queryLookSourceConstraintInfos = dBSourceSyncDao
-					.queryLookSourceConstraintInfos(tableSchema, sourceTables, constraintTypes);
+					.queryLookSourceConstraintInfos(sourceTableSchema, sourceTables, constraintTypes);
 			Map<String, TableInfo> sourceMap = PackageUtils.packTables(queryLookSourceTableInfos, null, null,
 					queryLookSourceConstraintInfos);
 			sqlSb = SQLGainUtils.addTargetConstraints(sourceMap, addConstraints, sqlSb);
@@ -551,9 +558,9 @@ public class DBSyncServiceImpl implements DBSyncService {
 			Map<String, String> packSourceTargetTables = serviceAssistUtils.getSourceTargetTables(currentVersonBigDecimal,
 					sourceTableNames);
 			Collection<String> targetTableNames = packSourceTargetTables.values();
-			List<TableInfo> queryLookTargetTableInfos = dBTargetSyncDao.queryLookTargetTableInfos(tableSchema,
+			List<TableInfo> queryLookTargetTableInfos = dBTargetSyncDao.queryLookTargetTableInfos(targetTableSchema,
 					targetTableNames);
-			List<ColumnInfo> queryLookTargetColumnInfos = dBTargetSyncDao.queryLookTargetColumnInfos(tableSchema, targetTableNames);
+			List<ColumnInfo> queryLookTargetColumnInfos = dBTargetSyncDao.queryLookTargetColumnInfos(targetTableSchema, targetTableNames);
 			Map<String, TableInfo> targetMap = PackageUtils.packTables(queryLookTargetTableInfos, queryLookTargetColumnInfos, null, null);
 			
 			sqlSb = SQLGainUtils.dropTargetConstraints(deleteConstraints, targetMap , packSourceTargetTables , sqlSb);
@@ -570,9 +577,9 @@ public class DBSyncServiceImpl implements DBSyncService {
 			Set<String> sourceTables = changeConstraints.stream().map(column -> {
 				return column.getTableName();
 			}).collect(Collectors.toSet());
-			List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(tableSchema,
+			List<TableInfo> queryLookSourceTableInfos = dBSourceSyncDao.queryLookSourceTableInfos(sourceTableSchema,
 					sourceTables);
-			List<IndexInfo> queryLookSourceIndexInfos = dBSourceSyncDao.queryLookSourceIndexInfos(tableSchema,
+			List<IndexInfo> queryLookSourceIndexInfos = dBSourceSyncDao.queryLookSourceIndexInfos(sourceTableSchema,
 					sourceTables);
 			Map<String, TableInfo> sourceMap = PackageUtils.packTables(queryLookSourceTableInfos, null,
 					queryLookSourceIndexInfos, null);
@@ -583,9 +590,9 @@ public class DBSyncServiceImpl implements DBSyncService {
 			Map<String, String> packSourceTargetTables = serviceAssistUtils.getSourceTargetTables(currentVersonBigDecimal,
 					sourceTableNames);
 			Collection<String> targetTableNames = packSourceTargetTables.values();
-			List<TableInfo> queryLookTargetTableInfos = dBTargetSyncDao.queryLookTargetTableInfos(tableSchema,
+			List<TableInfo> queryLookTargetTableInfos = dBTargetSyncDao.queryLookTargetTableInfos(targetTableSchema,
 					targetTableNames);
-			List<ColumnInfo> queryLookTargetColumnInfos = dBTargetSyncDao.queryLookTargetColumnInfos(tableSchema, targetTableNames);
+			List<ColumnInfo> queryLookTargetColumnInfos = dBTargetSyncDao.queryLookTargetColumnInfos(targetTableSchema, targetTableNames);
 			Map<String, TableInfo> targetMap = PackageUtils.packTables(queryLookTargetTableInfos, queryLookTargetColumnInfos, null, null);
 			
 			

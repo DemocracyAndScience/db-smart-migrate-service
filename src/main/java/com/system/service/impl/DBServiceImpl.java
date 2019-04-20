@@ -52,7 +52,7 @@ public class DBServiceImpl implements DBService {
 	private VersionManageUtils versionManageUtils ; 
 	@Override
 	public List<VersionInfo> getInfo() {
-		String tableSchema = dBUtils.getTableSchema(session);
+		String tableSchema = dBUtils.getTargetTableSchema(session);
 		flyway.setSchemas(tableSchema);
 		flyway.setLocations(SystemConstants.FILE_STSTEM + pathUtil.getPath());
 		MigrationInfo[] all = flyway.info().all();
@@ -142,7 +142,7 @@ public class DBServiceImpl implements DBService {
 
 	@Override
 	public int migrate() {
-		String tableSchema = dBUtils.getTableSchema(session);
+		String tableSchema = dBUtils.getTargetTableSchema(session);
 		flyway.setSchemas(tableSchema);
 		flyway.setLocations(SystemConstants.FILE_STSTEM + pathUtil.getPath());
 		VersionInfo info = getInfo().get(0);

@@ -9,7 +9,6 @@ import java.util.List;
 
 @Component
 @Order(2)
-//@ConfigurationProperties("databases")
 public class DatabasesNames {
 
 
@@ -17,15 +16,9 @@ public class DatabasesNames {
     private DataSourceInfos databaseConfigs;
 
 
-    //  private List<String> names ;
     public List<String> getNames() {
-        //  return names ;
         return new ArrayList<String>(databaseConfigs.getNameSpaces().keySet());
     }
-    /*public void  setNames(List<String> names  ){
-        this.names = names;
-    }
-*/
 
 
 }
