@@ -1,0 +1,8 @@
+private Integer id;
+private Integer studentId;
+private Integer lessonId;
+private Date createTime;
+private String createMan;
+private Date updateTime;
+private String updateMan;
+private String deleteState;

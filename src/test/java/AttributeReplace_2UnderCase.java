@@ -1,11 +1,4 @@
-import org.junit.Test;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 /**
  * 只复制字段
  * @author noah
@@ -13,14 +6,14 @@ import java.io.IOException;
  */
 public class AttributeReplace_2UnderCase {
 
-	@Test
-	public  void main(String[] args) throws Exception{
+
+	public static void main(String[] args) throws Exception{
 		String file = "/Users/noah/project/db-control-version-server/src/test/java/d.txt";
 		//DBAtrr2__(file);
 		DBAtrr2JAVA(file);
 	}
 
-	private   void DBAtrr2JAVA(String file) throws FileNotFoundException, IOException {
+	private  static void DBAtrr2JAVA(String file) throws FileNotFoundException, IOException {
 		File file2 = new File(file);
 		FileReader fis = new FileReader(file2);
 		BufferedReader bufferedReader = new BufferedReader(fis);

@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.system</groupId>
 	<artifactId>db-control-version-server</artifactId>
-	<version>1.0.1-RELEASE</version>
+	<version>1.0.2-RELEASE</version>
 	<packaging>jar</packaging>
 
 	<name>db-control-version-server</name>
