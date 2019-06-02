@@ -34,65 +34,6 @@ public class DataSourcesConfig implements ApplicationContextAware {
 
     private ApplicationContext applicationContext;
 
-    /* *//**
-     * 两个数据源设置
-     **//*
-    @Bean(name = "sourceDataSource_database_name")
-    @ConfigurationProperties(prefix = "sync_source_database_name.datasource")
-    @Qualifier("sourceDataSource_database_name")
-    public DataSource sourceDataSource() {
-        DataSourceBuilder create = DataSourceBuilder.create();
-        return create.build();
-    }
-
-    @Bean(name = "targetDataSource_database_name")
-    @ConfigurationProperties(prefix = "sync_target_database_name.datasource")
-    @Qualifier("targetDataSource_database_name")
-    public DataSource targetDataSource() {
-        return DataSourceBuilder.create().build();
-    }
-
-     *//**
-     * 两个数据源设置
-     **//*
-    @Bean(name = "sourceDataSource_database_name-assistant")
-    @ConfigurationProperties(prefix = "sync_source_database_name-assistant.datasource")
-    @Qualifier("sourceDataSource_database_name-assistant")
-    public DataSource sourceDataSource_database_name_assistant() {
-        DataSourceBuilder create = DataSourceBuilder.create();
-        return create.build();
-    }
-
-    @Bean(name = "targetDataSource_database_name-assistant")
-    @ConfigurationProperties(prefix = "sync_target_database_name-assistant.datasource")
-    @Qualifier("targetDataSource_database_name-assistant")
-    public DataSource targetDataSource_database_name_assistant() {
-        DataSource build = DataSourceBuilder.create().build();
-        return build;
-    }
-
-
-
-    */
-
-    /**
-     * 两个数据源设置
-     **//*
-    @Bean(name = "sourceDataSource_xxl-job")
-    @ConfigurationProperties(prefix = "sync_source_xxl-job.datasource")
-    @Qualifier("sourceDataSource_xxl-job")
-    public DataSource sourceDataSource_xxl_job() {
-        DataSource build = DataSourceBuilder.create().build();
-        return build;
-    }
-
-    @Bean(name = "targetDataSource_xxl-job")
-    @ConfigurationProperties(prefix = "sync_target_xxl-job.datasource")
-    @Qualifier("targetDataSource_xxl-job")
-    public DataSource targetDataSource_xxl_job() {
-        return DataSourceBuilder.create().build();
-    }
-*/
     @Bean
     @Qualifier("sourceDataSource")
     public MultiSourceDataSource sourceMultiSourceDataSource() {

@@ -1,12 +1,18 @@
 # DB-CONTROL-VERSION-SERVER
 #### INTRODUCE
 ##### Synchronized database structure, version control.
-- Synchronize the table, column, index and other information of two schemas between any two environments to solve the problem of database structure differences between different environments.<br/>
-- eg.：The online environment BUG is caused by the change of development database due to the requirement of each new function on line.<br/>
-- Change target schema based on source schema ,Changes include: database tables, table attributes, column names, column attributes, index names, index attributes.<br/>
-- Currently, foreign keys and table spaces are not supported, because modern projects generally do not seem to need them.
-- Currently only Mysql is supported.
-- Provides an interface to support customization of certain fields.
+- Instead of the synchronization function of Navicat structure, it solves the problem that if the source table has fewer columns than the target table, the synchronization function of Navicat structure will cause the data to be deleted.<br/>
+- Synchronize the table, column, and index information of two schemas between any two environments, but the original data records of the two environments remain unchanged.<br/>
+- In the same development cycle, due to product requirements, the development environment table information changes many times, when the environment changes, the need to manually record changes..<br/>
+- Solve the problem of database table structure differences between different environments.<br/>
+- With source schema as the benchmark and target schema as the goal, we can freely choose the changes to be synchronized and provide page interaction buttons (as shown below).<br/>
+- Provide different results of each synchronization, save them as SQL files, and do version management.<br/>
+- Synchronized content items are: database tables, table attributes, column names, column attributes, index names, index attributes.<br/>
+- Asynchronous Content Items: Data from Datasheets.<br/>
+- Synchronization of foreign keys and table spaces is not currently supported because modern projects generally do not seem to need them.<br/>
+- Synchronization of foreign keys and table spaces is not currently supported because modern projects generally do not seem to need them.<br/>
+- Currently only Mysql is supported.<br/>
+
 <br/>![avatar](./src/desc-images/a.png)
 #### SOFTWARE ARCHITECTURE
 - Used SpringBoot 1.5.9.RELEASE

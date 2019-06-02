@@ -1,8 +1,9 @@
-private Integer id;
-private Integer studentId;
-private Integer lessonId;
-private Date createTime;
+private Long id;
+private Long assistantEmailId;
+private Long receverId;
+private String receverEmail;
+private String pReceverId;
+private Integer uRoleId;
 private String createMan;
-private Date updateTime;
-private String updateMan;
-private String deleteState;
+private Date createTime;
+private Integer deleteState;

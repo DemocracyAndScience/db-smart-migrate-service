@@ -1,7 +1,4 @@
 import com.system.DbVersionControlServerApplication;
-import com.system.config.DataSourceInfos;
-import com.system.config.support.MyDataSource;
-import com.system.utils.MD5Utils;
 import com.system.utils.componet.DBUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.servlet.http.HttpSession;
-import java.util.Map;
 
 
 @RunWith(SpringRunner.class)
@@ -29,5 +25,8 @@ public class StringBootTest {
 
         String sourceTableSchema = dBUtils.getTargetTableSchema(session);
         System.out.println(sourceTableSchema);
+
+
+
     }
 }
