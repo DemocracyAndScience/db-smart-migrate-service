@@ -52,16 +52,6 @@
         
         ```
         
-   2. Dockerfile 或本地 创建目录  
-   
-        - 创建目录为生成将要执行的SQL文件路径。
-        ```springdataql
-          RUN mkdir -p /var/logs/db_locations/dev/
-          RUN mkdir -p /var/logs/db_locations/local/
-          RUN mkdir -p /var/logs/db_locations/staging/
-          RUN mkdir -p /var/logs/db_locations/online/
-          RUN mkdir -p /var/logs/db_locations/test/
-        ```
         
 2. 如果想配置多个数据库 schema   则放开注释即可
 
