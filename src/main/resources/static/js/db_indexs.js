@@ -26,7 +26,7 @@ function dbIndexs(){
 			$(this).parent().parent().remove();
 		}
 	});
-	// 索引名更名为 
+	// 索引名更名
 	$('body').on('click','.js_button_index',
 		function() {
 			 var pre =  $(this).parent().parent().parent().prev();
@@ -72,7 +72,7 @@ function dbIndexs(){
 		var sd = $(this).parent().prev().children();
 		var sdnum = sd.size();
 		if (sdnum <= 0) {
-			alert("未点击更名为");
+			alert("未点击更名");
 			return false;
 		}
 		var value = sd.val();
@@ -173,7 +173,7 @@ function flushSourceIndexs(){
 							+	'<td><span class="span ">'+sourceIndexSub.version+'</span></td>'   
 							+	'<td><span class="span sourceTables3">'+sourceIndexSub.sourceIndexName+'</span></td>'   
 							+	'<td><button class="button_insert_index">新增</button></td>'   
-							+	'<td><button class="button js_button_index">更名为</button></td>'   
+							+	'<td><button class="button js_button_index">更名</button></td>'
 							+	'<td></td>'   	
 							+	'<td><button class="button_index">确定</button></td>'   
 							+ '</tr>'   ;

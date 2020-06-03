@@ -23,7 +23,7 @@ function dbTables(){
 				}
 
 			});
-			// 表名更名为 
+			// 表名更名
 			$('body').on('click','.js_button_table',
 				function() {
 					var td = $(this).parent().next();
@@ -60,7 +60,7 @@ function dbTables(){
 				var sd = $(this).parent().prev().children();
 				var sdnum = sd.size();
 				if (sdnum <= 0) {
-					alert("未点击更名为！");
+					alert("未点击更名！");
 					return false;
 				}
 				var value = sd.val();
@@ -165,7 +165,7 @@ function flushSourceTables (){
 								+ sourceTable.sourceTableName
 								+ '</span></td>'
 								+ '<td><button class="button_insert_table">新增</button></td>'
-								+ '<td><button class="button js_button_table">更名为</button></td>'
+								+ '<td><button class="button js_button_table">更名</button></td>'
 								+ '<td></td>'
 								+ '<td><button class="button_table">确定</button></td>'
 								+ '</tr>';
