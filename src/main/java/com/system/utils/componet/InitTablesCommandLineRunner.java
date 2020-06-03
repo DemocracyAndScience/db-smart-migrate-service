@@ -37,13 +37,13 @@ public class InitTablesCommandLineRunner implements CommandLineRunner {
 		List<String> locations = flywayProperties.getLocations();
 		for (String location : locations) {
 			for (String namePath : namePaths) {
-				location = location.substring(location.indexOf(":")+1)+"/"+namePath;
-				log.info("flyway 读取路径: " + location);
-				File file = new File(location);
+				String path = location.substring(location.indexOf(":")+1)+"/"+namePath;
+				log.info("flyway 读取路径: " + path);
+				File file = new File(path);
 				if (!file.exists()){
 					boolean mkdirs = file.mkdirs();
 					if(mkdirs)
-					log.info("创建 flyway 读取路径成功  : " + location);
+					log.info("创建 flyway 读取路径成功  : " + path);
 				}
 			}
 
