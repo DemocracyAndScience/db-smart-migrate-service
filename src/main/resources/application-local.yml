@@ -1,36 +1,34 @@
 flyway:
   enabled: false
-  locations: filesystem:${locations_pre_path:/var/logs/db_locations}/local
+  locations: filesystem:${locations_pre_path:./var/logs/db_locations}/local
   baseline-on-migrate: true
   validate-on-migrate: false
 
 databases_sync:
   name_spaces:
-    shuangshi:
+    config_apaas:
       source:
         datasource:
-          url: ${source_1_url:jdbc:mysql://10.88.88.7:3306/shuangshi?characterEncoding=utf-8&autoReconnect=true}
+          url: ${source_1_url:jdbc:mysql://192.168.213.6:3306/config_apaas?characterEncoding=utf-8&autoReconnect=true}
           username: ${source_1_username:root}
-          password: ${source_1_password:tengyue360}
+          password: ${source_1_password:123456}
           driver-class-name: com.mysql.jdbc.Driver
       target:
         datasource:
-          url: ${source_1_url:jdbc:mysql://10.88.88.9:3306/shuangshi-mysql?characterEncoding=utf-8&autoReconnect=true}
+          url: ${source_1_url:jdbc:mysql://192.168.213.6:3306/config?characterEncoding=utf-8&autoReconnect=true}
           username: ${source_1_username:root}
-          password: ${source_1_password:tengyue360}
+          password: ${source_1_password:123456}
           driver-class-name: com.mysql.jdbc.Driver
-#    database_name-mysql:
-#      source:
-#        datasource:
-#          url: ${source_1_url:jdbc:mysql://test:3306/database_name-mysql?characterEncoding=utf-8&useSSL=false}
-#          username: ${source_1_username:root}
-#          password: ${source_1_password:123456}
-#          driver-class-name: com.mysql.jdbc.Driver
-#      target:
-#        datasource:
-#          url: ${target_1_url:jdbc:mysql://dev:3306/database_name-mysql?characterEncoding=utf-8&useSSL=false}
-#          username: ${target_1_username:root}
-#          password: ${target_1_password:123456}
-#          driver-class-name: com.mysql.jdbc.Driver
-
-
+    user:
+      source:
+        datasource:
+          url: ${source_1_url:jdbc:mysql://192.168.213.6:3306/user_apaas?characterEncoding=utf-8&useSSL=false}
+          username: ${source_1_username:root}
+          password: ${source_1_password:123456}
+          driver-class-name: com.mysql.jdbc.Driver
+      target:
+        datasource:
+          url: ${target_1_url:jdbc:mysql://192.168.213.6:3306/user?characterEncoding=utf-8&useSSL=false}
+          username: ${target_1_username:root}
+          password: ${target_1_password:123456}
+          driver-class-name: com.mysql.jdbc.Driver
