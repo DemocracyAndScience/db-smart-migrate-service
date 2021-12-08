@@ -4,11 +4,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.system</groupId>
-	<artifactId>db-control-version-server</artifactId>
+	<artifactId>db-smart-migrate-server</artifactId>
 	<version>1.0.2-RELEASE</version>
 	<packaging>jar</packaging>
 
-	<name>db-control-version-server</name>
+	<name>db-smart-migrate-server</name>
 	<description>DB manage</description>
 
 	<parent>
