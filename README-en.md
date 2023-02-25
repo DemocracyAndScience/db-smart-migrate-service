@@ -1,4 +1,4 @@
-# DB-CONTROL-VERSION-SERVER
+# db-smart-migrate-server
 #### INTRODUCE
 ##### Synchronized database structure, version control.
 - Instead of the synchronization function of Navicat structure, it solves the problem that if the source table has fewer columns than the target table, the synchronization function of Navicat structure will cause the data to be deleted.<br/>
@@ -59,11 +59,11 @@
    
         - Create directories to generate the path of the SQL file to be executed.
         ```springdataql
-          RUN mkdir -p /var/logs/db_locations/dev/
-          RUN mkdir -p /var/logs/db_locations/local/
-          RUN mkdir -p /var/logs/db_locations/staging/
-          RUN mkdir -p /var/logs/db_locations/online/
-          RUN mkdir -p /var/logs/db_locations/test/
+          RUN mkdir -p ~/logs/db_locations/dev/
+          RUN mkdir -p ~/logs/db_locations/local/
+          RUN mkdir -p ~/logs/db_locations/staging/
+          RUN mkdir -p ~/logs/db_locations/online/
+          RUN mkdir -p ~/logs/db_locations/test/
         ```
         
 2. If you want to configure multiple database schemas, just leave the notes open.

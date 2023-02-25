@@ -172,7 +172,7 @@ function flushSourceColumns(){
 							+	'<td><span class="span ">'+sourceColumnSub.version+'</span></td>'   
 							+	'<td><span class="span sourceTables2">'+sourceColumnSub.sourceColumnName+'</span></td>'   
 							+	'<td><button class="button_insert_column">新增</button></td>'   
-							+	'<td><button class="button js_button_column">更名</button></td>'
+							+	'<td><button class="button js_button_column">被更名为</button></td>'
 							+	'<td></td>'   	
 							+	'<td><button class="button_column">确定</button></td>'   
 							+ '</tr>'   ;

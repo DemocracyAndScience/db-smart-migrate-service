@@ -1,6 +1,6 @@
 flyway:
   enabled: false
-  locations: filesystem:${locations_pre_path:/var/logs/db_locations}/dev
+  locations: filesystem:${locations_pre_path:~/logs/db_locations}/dev
   baseline-on-migrate: true
   validate-on-migrate: false
 
